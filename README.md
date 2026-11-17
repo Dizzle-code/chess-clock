@@ -1,5 +1,7 @@
 # Schachuhr
 
+[![CI & Deploy](https://github.com/dizzle-code/chess-clock/actions/workflows/ci.yml/badge.svg)](https://github.com/dizzle-code/chess-clock/actions/workflows/ci.yml)
+
 Schachuhr als Web-App für Handy, Tablet und Desktop. Sie braucht keine Abhängigkeiten
 und keinen Build-Schritt.
 
@@ -31,5 +33,15 @@ npm test       # Unit-Tests der Uhr-Logik (Node ≥ 18)
 
 Die Seite muss über einen Webserver geöffnet werden, weil die ES-Module nicht per
 `file://` laden.
+
+## GitHub Workflow
+
+`.github/workflows/ci.yml` läuft bei jedem Push und Pull Request:
+
+1. **Tests** mit Node 20 und 22 (`npm test`)
+2. **Deploy auf GitHub Pages**, nur bei Push auf `main` und nur wenn die Tests grün sind
+
+Einmalig nötig: Im Repository unter *Settings → Pages → Build and deployment → Source*
+**GitHub Actions** auswählen.
 
 Details zu Recherche und Architektur stehen in [PLAN.md](PLAN.md).

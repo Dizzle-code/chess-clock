@@ -62,7 +62,7 @@ test/clock.test.js  Unit-Tests mit `node --test` (keine Abhängigkeiten)
 - Vorgaben und eigene Einstellungen, auch unterschiedliche Zeiten (Handicap)
 - Kurzer Ton beim Umschalten und bei Zeitablauf, Bildschirm bleibt an (Wake Lock)
 
-## 3. Später: GitHub Workflow
+## 3. GitHub Workflow (umgesetzt in `.github/workflows/ci.yml`)
 
 - **CI:** Bei jedem Push und Pull Request laufen die Tests mit `node --test`.
 - **Deploy:** Bei Push auf `main` wird die Seite auf GitHub Pages veröffentlicht.
