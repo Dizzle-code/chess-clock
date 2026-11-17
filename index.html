@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, user-scalable=no">
+  <meta name="theme-color" content="#1b1b1f">
+  <meta name="description" content="Schachuhr mit Fischer-Inkrement, Bronstein- und Simple-Delay">
+  <title>Schachuhr</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="clock">
+    <button class="side top" id="side-0" type="button" aria-label="Uhr oben">
+      <span class="time" id="time-0">5:00</span>
+      <span class="info"><span id="moves-0">Züge: 0</span><span class="delay" id="delay-0"></span></span>
+    </button>
+
+    <nav class="controls" aria-label="Steuerung">
+      <button type="button" id="btn-settings" title="Einstellungen" aria-label="Einstellungen">⚙</button>
+      <button type="button" id="btn-pause" title="Pause (Leertaste)" aria-label="Pause">⏸</button>
+      <button type="button" id="btn-reset" title="Zurücksetzen" aria-label="Zurücksetzen">↺</button>
+      <button type="button" id="btn-sound" title="Ton an/aus" aria-label="Ton an/aus">🔊</button>
+      <span class="label" id="label">5 + 0</span>
+    </nav>
+
+    <button class="side bottom" id="side-1" type="button" aria-label="Uhr unten">
+      <span class="time" id="time-1">5:00</span>
+      <span class="info"><span id="moves-1">Züge: 0</span><span class="delay" id="delay-1"></span></span>
+    </button>
+  </main>
+
+  <dialog id="settings">
+    <form method="dialog" id="settings-form">
+      <h2>Einstellungen</h2>
+
+      <label>Vorgabe
+        <select id="preset"></select>
+      </label>
+
+      <fieldset>
+        <legend>Bedenkzeit</legend>
+        <div class="row">
+          <label>Minuten <input type="number" id="min-0" min="0" max="600" step="1" inputmode="numeric"></label>
+          <label>Sekunden <input type="number" id="sec-0" min="0" max="59" step="1" inputmode="numeric"></label>
+        </div>
+        <label class="check"><input type="checkbox" id="handicap"> Unterschiedliche Zeit für unten (Handicap)</label>
+        <div class="row" id="handicap-row" hidden>
+          <label>Min. unten <input type="number" id="min-1" min="0" max="600" step="1" inputmode="numeric"></label>
+          <label>Sek. unten <input type="number" id="sec-1" min="0" max="59" step="1" inputmode="numeric"></label>
+        </div>
+      </fieldset>
+
+      <fieldset>
+        <legend>Modus</legend>
+        <label>Typ
+          <select id="mode">
+            <option value="none">Sudden Death (ohne Zugabe)</option>
+            <option value="fischer">Fischer-Inkrement</option>
+            <option value="bronstein">Bronstein-Delay</option>
+            <option value="delay">Simple Delay (US)</option>
+          </select>
+        </label>
+        <label id="inc-label">Inkrement / Delay (Sekunden) <input type="number" id="inc" min="0" max="600" step="1" inputmode="numeric"></label>
+        <p class="hint" id="mode-hint"></p>
+      </fieldset>
+
+      <fieldset>
+        <legend>Zeitkontrolle (optional)</legend>
+        <div class="row">
+          <label>Nach Zug <input type="number" id="stage-moves" min="0" max="200" step="1" inputmode="numeric" placeholder="z. B. 40"></label>
+          <label>+ Minuten <input type="number" id="stage-min" min="0" max="600" step="1" inputmode="numeric" placeholder="z. B. 30"></label>
+        </div>
+      </fieldset>
+
+      <p class="error" id="settings-error" role="alert"></p>
+
+      <div class="actions">
+        <button type="button" id="settings-cancel">Abbrechen</button>
+        <button type="submit" id="settings-save" value="save" class="primary">Übernehmen</button>
+      </div>
+    </form>
+  </dialog>
+
+  <script type="module" src="src/app.js"></script>
+</body>
+</html>
